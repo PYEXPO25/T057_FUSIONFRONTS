@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Medicine Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .reminder-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Medicine Reminders</h1>
+            <div>
+                <a href="{% url 'add_reminder' %}" class="button">Add Reminder</a>
+                <a href="{% url 'logout' %}" class="button" style="background-color: #dc3545;">Logout</a>
+            </div>
+        </div>
+        
+        {% if reminders %}
+        {% for reminder in reminders %}
+        <div class="reminder-card">
+            <h3>{{ reminder.medicine_name }}</h3>
+            <p>Date: {{ reminder.date }}</p>
+            <p>Time: {{ reminder.time }}</p>
+            <p>Frequency: {{ reminder.get_frequency_display }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No reminders added yet.</p>
+    {% endif %}
+
+    </div>
+</body>
+</html>
