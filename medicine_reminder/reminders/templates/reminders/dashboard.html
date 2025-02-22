@@ -49,18 +49,17 @@
         </div>
         
         {% if reminders %}
-        {% for reminder in reminders %}
-        <div class="reminder-card">
-            <h3>{{ reminder.medicine_name }}</h3>
-            <p>Date: {{ reminder.date }}</p>
-            <p>Time: {{ reminder.time }}</p>
-            <p>Frequency: {{ reminder.get_frequency_display }}</p>
-        </div>
-        {% endfor %}
-    {% else %}
-        <p>No reminders added yet.</p>
-    {% endif %}
-
+            {% for reminder in reminders %}
+            <div class="reminder-card">
+                <h3>{{ reminder.medicine_name }}</h3>
+                <p>Date: {{ reminder.date }}</p>
+                <p>Time: {{ reminder.time }}</p>
+                <p>Frequency: {{ reminder.get_frequency_display }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No reminders added yet.</p>
+        {% endif %}
     </div>
 </body>
 </html>
